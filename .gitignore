@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+*.egg-info/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 数据与模型（千万别传！）
+/pre_train_model/
+/data/*.json
+/data/*.bin
+*.bin
+*.pt
+*.pth
+*.safetensors
+*.bin.index.json
+
+# Jupyter
+.ipynb_checkpoints
+*.ipynb
+
+# OS
+.DS_Store
+Thumbs.db
