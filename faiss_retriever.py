@@ -47,7 +47,7 @@ class FaissRetriever(object):
 
     # 获取top-K分数最高的文档块
     def GetTopK(self, query, k: int=5):
-        context = self.vectors_store.similarity_search(query, k=k)
+        context = self.vectors_store.similarity_search_with_score(query, k=k)
         return context
 
     # 返回faiss向量检索对象

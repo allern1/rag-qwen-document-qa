@@ -15,11 +15,10 @@ from langchain.chains import create_retrieval_chain
 
 import time
 from rerank_model import reRankLLM
-from 基于大模型的文档检索问答.faiss_retriever import FaissRetriever
+from faiss_retriever import FaissRetriever
 from bm25_retriever import BM25
 from pdf_parse import DataProcess
-
-from vllm_model import ChatLLM
+from hf_model import ChatLLM
 
 # 获取Langchain的工具链
 def get_qa_chain(llm, vector_store, prompt_template):
@@ -88,7 +87,7 @@ def get_emb_bm25_merge(faiss_context, bm25_context, query):
         cnt = cnt + 1
         if cnt > 6:
             break
-        if len(bm25_ans + doc) > max_length:
+        if len(bm25_ans + doc.page_content) > max_length:
             break
         emb_ans = bm25_ans + doc.page_content
 
@@ -137,7 +136,7 @@ def reRank(rerank, top_k, query, bm25_ams, faiss_ans):
 if __name__ == "__main__":
     start = time.time()
     base = "."
-    qwen = base + "/pre_train_model/my_qwen"
+    qwen = base + "/pre_train_model/Qwen_0.6B"
     m3e =  base + "/pre_train_model/m3e-large"
     bge_reranker_large = base + "/pre_train_model/bge-reranker-large"
 
@@ -172,7 +171,7 @@ if __name__ == "__main__":
     print("rerank model load ok")
 
     # 对每一条测试问题，做答案生成处理
-    with open(base + "/data/test_question.json", "r") as f:
+    with open(base + "/data/demo.json", "r") as f:
         jdata = json.load(f)
         print(len(jdata))
         max_length = 4000
