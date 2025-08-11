@@ -17,7 +17,7 @@ import time
 from rerank_model import reRankLLM
 from faiss_retriever import FaissRetriever
 from bm25_retriever import BM25
-from pdf_parse import DataProcess
+from pymupdf_parse import DataProcess
 from hf_model import ChatLLM
 
 # 获取Langchain的工具链
