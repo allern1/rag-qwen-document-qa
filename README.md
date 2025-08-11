@@ -1,12 +1,11 @@
-# 阶段14：项目实战1：智能座舱汽车知识大脑
+# 项目实战：智能座舱汽车知识大脑
 
 该项目属于最近很火的大模型RAG任务，使用现有的车主手册构建知识库，然后选择知识库中的相关知识用于辅助大模型生成。整个方案的构建流程主要分为3大部分：构建知识库、知识检索、答案生成。
 
 ### 1、代码结构
 
 ```text
-.
-├── Dockerfile                     # 镜像文件
+
 ├── README.md                      # 说明文档
 ├── bm25_retriever.py              # BM25召回
 ├── build.sh                       # 镜像编译打包
@@ -18,7 +17,7 @@
 ├── vllm_model.py                  # vllm大模型加速wrapper
 ├── pdf_parse.py                   # pdf文档解析器
 ├── pre_train_model                # 预训练大模型
-│   ├── Qwen-7B-Chat               # Qwen-7B
+│   ├── Qwen-8B-Chat               # Qwen-8B
 │   │   └── download.py
 │   ├── bge-reranker-large         # bge重排序模型
 │   └── m3e-large                  # 向量检索模型
